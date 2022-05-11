@@ -4,6 +4,7 @@
  */
 package telalogin;
 
+import javax.swing.JOptionPane;
 import trabalhoeventos.Principal;
 
 /**
@@ -30,24 +31,24 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        lblNome = new javax.swing.JLabel();
+        lblLogin = new javax.swing.JLabel();
+        lblSenha = new javax.swing.JLabel();
+        lblSenhaConfirm = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        txtLogin = new javax.swing.JTextField();
+        txtSenhaConfirm = new javax.swing.JTextField();
+        txtSenha = new javax.swing.JTextField();
+        lblNivel = new javax.swing.JLabel();
+        checkUsuario = new javax.swing.JCheckBox();
+        checkTI = new javax.swing.JCheckBox();
+        checkSupervisor = new javax.swing.JCheckBox();
+        checkConsultor = new javax.swing.JCheckBox();
+        lblSetor = new javax.swing.JLabel();
+        comboSetor = new javax.swing.JComboBox<>();
+        lblEmail = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        btnEntrar = new javax.swing.JButton();
         buttonSair = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
 
@@ -59,32 +60,50 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("TELA DE LOGIN");
 
-        jLabel2.setText("Nome:");
+        lblNome.setForeground(new java.awt.Color(0, 0, 0));
+        lblNome.setText("Nome:");
 
-        jLabel3.setText("Login:");
+        lblLogin.setForeground(new java.awt.Color(0, 0, 0));
+        lblLogin.setText("Login:");
 
-        jLabel4.setText("Senha:");
+        lblSenha.setForeground(new java.awt.Color(0, 0, 0));
+        lblSenha.setText("Senha:");
 
-        jLabel5.setText("Confirmação de senha:");
+        lblSenhaConfirm.setForeground(new java.awt.Color(0, 0, 0));
+        lblSenhaConfirm.setText("Confirmação de senha:");
 
-        jLabel6.setText("Nível de acesso:");
+        lblNivel.setForeground(new java.awt.Color(0, 0, 0));
+        lblNivel.setText("Nível de acesso:");
 
-        jCheckBox1.setText("Usuario");
+        checkUsuario.setForeground(new java.awt.Color(0, 0, 0));
+        checkUsuario.setText("Usuario");
 
-        jCheckBox2.setText("T.I");
+        checkTI.setForeground(new java.awt.Color(0, 0, 0));
+        checkTI.setText("T.I");
 
-        jCheckBox3.setText("Supervisor");
+        checkSupervisor.setForeground(new java.awt.Color(0, 0, 0));
+        checkSupervisor.setText("Supervisor");
 
-        jCheckBox4.setText("Consultor");
+        checkConsultor.setForeground(new java.awt.Color(0, 0, 0));
+        checkConsultor.setText("Consultor");
 
-        jLabel7.setText("Setor:");
+        lblSetor.setForeground(new java.awt.Color(0, 0, 0));
+        lblSetor.setText("Setor:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Vendas", "Administrativo", "Estoque", "TI", "RH", "Logistica", "Suporte" }));
+        comboSetor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Administrativo", "Gestão", "Protocolo" }));
 
-        jLabel8.setText("Email:");
+        lblEmail.setForeground(new java.awt.Color(0, 0, 0));
+        lblEmail.setText("Email:");
 
-        jButton1.setText("Entrar");
+        btnEntrar.setForeground(new java.awt.Color(0, 0, 0));
+        btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
+        buttonSair.setForeground(new java.awt.Color(0, 0, 0));
         buttonSair.setText("Sair");
         buttonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +111,13 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
+        btnLimpar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,50 +129,50 @@ public class TelaLogin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(lblNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1))
+                                .addComponent(txtNome))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(lblSenha)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblLogin)
+                                .addGap(3, 3, 3)
+                                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(lblSenhaConfirm)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtSenhaConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(30, 30, 30))
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(lblNivel)
                                 .addGap(18, 18, 18)
-                                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(checkUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(lblSetor)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(comboSetor, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(checkTI, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(checkSupervisor)
+                                .addGap(4, 4, 4)
+                                .addComponent(checkConsultor, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 61, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnEntrar)
                         .addGap(18, 18, 18)
                         .addComponent(btnLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -161,32 +186,32 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNome)
+                    .addComponent(lblLogin)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSenha)
+                    .addComponent(lblSenhaConfirm)
+                    .addComponent(txtSenhaConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox3)
-                    .addComponent(jCheckBox4))
+                    .addComponent(lblNivel)
+                    .addComponent(checkUsuario)
+                    .addComponent(checkTI)
+                    .addComponent(checkSupervisor)
+                    .addComponent(checkConsultor))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSetor)
+                    .addComponent(comboSetor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnEntrar)
                     .addComponent(buttonSair)
                     .addComponent(btnLimpar))
                 .addContainerGap())
@@ -209,13 +234,61 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
         dispose();
-        trabalhoeventos.Principal t = new Principal();
-        t.setVisible(true);
     }//GEN-LAST:event_buttonSairActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        txtEmail.setText("");
+        txtLogin.setText("");
+        txtNome.setText("");
+        txtSenha.setText("");
+        txtSenhaConfirm.setText("");
+        comboSetor.setSelectedItem("  ");
+        checkConsultor.setSelected(false);
+        checkSupervisor.setSelected(false);
+        checkTI.setSelected(false);
+        checkUsuario.setSelected(false);
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        String auxNome, auxEmail, auxLogin, auxSenha, auxSenhaConfirm, auxSetor, auxCheck;
+        boolean valido = true;
+        auxEmail = txtEmail.getText();
+        auxNome = txtNome.getText();
+        auxLogin = txtLogin.getText();
+        auxSenha = txtSenha.getText();
+        auxSenhaConfirm = txtSenhaConfirm.getText();
+        auxSetor = comboSetor.getSelectedItem().toString();
+        auxCheck = "";
+        if (checkConsultor.isSelected()){
+            auxCheck = "| Consultor |" + auxCheck;
+        }
+        if (checkSupervisor.isSelected()){
+            auxCheck = "| Supervisor |" + auxCheck;
+        }
+        if (checkTI.isSelected()){
+            auxCheck = "| TI |" + auxCheck;
+        }
+        if (checkUsuario.isSelected()){
+            auxCheck = "| Usuario |" + auxCheck;
+        }        
+        if (auxEmail.isEmpty() || auxNome.isEmpty() || auxLogin.isEmpty() || auxSenha.isEmpty() || 
+            auxSenhaConfirm.isEmpty() || auxSetor.isEmpty() || auxCheck.isEmpty()){           
+                    JOptionPane.showMessageDialog(null, "Preencha os campos obrigatórios!");
+                    valido = false;
+        } else if (txtSenha.getText().equals(txtSenhaConfirm.getText())){
+              valido = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Senhas diferentes! Insira senhas iguais.");
+            valido = false;
+        }    
+        if (valido == true){
+            JOptionPane.showMessageDialog(null, "Acesso permitido! \nNome:" + auxNome + 
+                    "\nNivel de acesso: " + auxCheck +
+                    "\nSetor:  " + auxSetor +
+                    "\nE-mail: " + auxEmail +
+                    "\nSeja Bem vindo!");
+        }    
+    }//GEN-LAST:event_btnEntrarActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -249,27 +322,27 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton buttonSair;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JCheckBox checkConsultor;
+    private javax.swing.JCheckBox checkSupervisor;
+    private javax.swing.JCheckBox checkTI;
+    private javax.swing.JCheckBox checkUsuario;
+    private javax.swing.JComboBox<String> comboSetor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblLogin;
+    private javax.swing.JLabel lblNivel;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblSenhaConfirm;
+    private javax.swing.JLabel lblSetor;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtLogin;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSenha;
+    private javax.swing.JTextField txtSenhaConfirm;
     // End of variables declaration//GEN-END:variables
 }

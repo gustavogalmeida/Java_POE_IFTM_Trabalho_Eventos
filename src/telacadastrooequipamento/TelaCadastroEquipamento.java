@@ -4,6 +4,7 @@
  */
 package telacadastrooequipamento;
 
+import javax.swing.JOptionPane;
 import trabalhoeventos.Principal;
 
 /**
@@ -30,19 +31,19 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        lblFabric = new javax.swing.JLabel();
+        lblVolt = new javax.swing.JLabel();
+        lblSerie = new javax.swing.JLabel();
+        txtNome = new javax.swing.JTextField();
+        comboFabric = new javax.swing.JComboBox<>();
+        comboVolt = new javax.swing.JComboBox<>();
+        comboSerie = new javax.swing.JComboBox<>();
+        lblQtd = new javax.swing.JLabel();
+        txtQtd = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel7 = new javax.swing.JLabel();
+        txtDescricao = new javax.swing.JTextArea();
+        lblDescricao = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         buttonSave = new javax.swing.JButton();
         buttonVoltar = new javax.swing.JButton();
@@ -57,38 +58,55 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("TELA DE CADASTRO DE EQUIPAMENTO");
 
-        jLabel2.setText("Nome do equipamento:");
+        lblNome.setBackground(new java.awt.Color(0, 0, 0));
+        lblNome.setForeground(new java.awt.Color(0, 0, 0));
+        lblNome.setText("Nome do equipamento:");
 
-        jLabel3.setText("Fabricante:");
+        lblFabric.setBackground(new java.awt.Color(0, 0, 0));
+        lblFabric.setForeground(new java.awt.Color(0, 0, 0));
+        lblFabric.setText("Fabricante:");
 
-        jLabel4.setText("Voltagem: ");
+        lblVolt.setBackground(new java.awt.Color(0, 0, 0));
+        lblVolt.setForeground(new java.awt.Color(0, 0, 0));
+        lblVolt.setText("Voltagem: ");
 
-        jLabel5.setText("Número de série:");
+        lblSerie.setBackground(new java.awt.Color(0, 0, 0));
+        lblSerie.setForeground(new java.awt.Color(0, 0, 0));
+        lblSerie.setText("Número de série:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Stihl", "Bosh" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboFabric.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Bosh", "Makita", "Skil", "Stihl" }));
+        comboFabric.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboFabricActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "117v", "220v" }));
+        comboVolt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "117v", "220v" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "785516651", "759845138", "746516545", "772156633", "759952031" }));
+        comboSerie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "746516545", "759845138", "759952031", "772156633", "785516651" }));
 
-        jLabel6.setText("Quantidade no estoque:");
+        lblQtd.setBackground(new java.awt.Color(0, 0, 0));
+        lblQtd.setForeground(new java.awt.Color(0, 0, 0));
+        lblQtd.setText("Quantidade no estoque:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtDescricao.setColumns(20);
+        txtDescricao.setRows(5);
+        jScrollPane1.setViewportView(txtDescricao);
 
-        jLabel7.setText("Descrição:");
+        lblDescricao.setBackground(new java.awt.Color(0, 0, 0));
+        lblDescricao.setForeground(new java.awt.Color(0, 0, 0));
+        lblDescricao.setText("Descrição:");
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setLayout(new java.awt.GridLayout(2, 2, 10, 10));
 
         buttonSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacadastrooequipamento/save.png"))); // NOI18N
+        buttonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSaveActionPerformed(evt);
+            }
+        });
         jPanel2.add(buttonSave);
 
         buttonVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacadastrooequipamento/back.png"))); // NOI18N
@@ -100,6 +118,11 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         jPanel2.add(buttonVoltar);
 
         buttonClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacadastrooequipamento/clean.png"))); // NOI18N
+        buttonClean.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCleanActionPerformed(evt);
+            }
+        });
         jPanel2.add(buttonClean);
 
         buttonFechar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/telacadastrooequipamento/cancel.png"))); // NOI18N
@@ -120,34 +143,34 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(lblFabric)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboFabric, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)
+                                .addComponent(lblVolt)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(comboVolt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblSerie)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(comboSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
+                                        .addComponent(lblQtd)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
@@ -158,23 +181,23 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNome)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFabric)
+                    .addComponent(lblVolt)
+                    .addComponent(lblSerie)
+                    .addComponent(comboFabric, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboVolt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboSerie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblQtd)
+                    .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
+                    .addComponent(lblDescricao)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,9 +221,9 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboFabricActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFabricActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboFabricActionPerformed
 
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
         dispose();
@@ -210,9 +233,27 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
 
     private void buttonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFecharActionPerformed
         dispose();
-        trabalhoeventos.Principal t = new Principal();
-        t.setVisible(true);
     }//GEN-LAST:event_buttonFecharActionPerformed
+
+    private void buttonCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCleanActionPerformed
+        txtDescricao.setText("");
+        txtNome.setText("");
+        txtQtd.setText("");
+        comboVolt.setSelectedItem("  ");
+        comboSerie.setSelectedItem("  ");
+        comboFabric.setSelectedItem("  ");
+    }//GEN-LAST:event_buttonCleanActionPerformed
+
+    private void buttonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveActionPerformed
+        JOptionPane.showMessageDialog(null, 
+                "Nome: " + txtNome.getText() +
+                "\nDescrição: " + txtDescricao.getText() +
+                "\nEstoque: " + txtQtd.getText() +
+                "\nVoltagem: " + comboVolt.getSelectedItem() +
+                "\nFabricante: " + comboFabric.getSelectedItem() +
+                "\nNumero de série: " + comboSerie.getSelectedItem()                
+                );
+    }//GEN-LAST:event_buttonSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,21 +295,21 @@ public class TelaCadastroEquipamento extends javax.swing.JFrame {
     private javax.swing.JButton buttonFechar;
     private javax.swing.JButton buttonSave;
     private javax.swing.JButton buttonVoltar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JComboBox<String> comboFabric;
+    private javax.swing.JComboBox<String> comboSerie;
+    private javax.swing.JComboBox<String> comboVolt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblDescricao;
+    private javax.swing.JLabel lblFabric;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblQtd;
+    private javax.swing.JLabel lblSerie;
+    private javax.swing.JLabel lblVolt;
+    private javax.swing.JTextArea txtDescricao;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtQtd;
     // End of variables declaration//GEN-END:variables
 }
