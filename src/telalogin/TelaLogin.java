@@ -37,8 +37,6 @@ public class TelaLogin extends javax.swing.JFrame {
         lblSenhaConfirm = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtLogin = new javax.swing.JTextField();
-        txtSenhaConfirm = new javax.swing.JTextField();
-        txtSenha = new javax.swing.JTextField();
         lblNivel = new javax.swing.JLabel();
         checkUsuario = new javax.swing.JCheckBox();
         checkTI = new javax.swing.JCheckBox();
@@ -51,6 +49,8 @@ public class TelaLogin extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
         buttonSair = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        txtSenhaConfirm = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -342,7 +342,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLogin;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSenha;
-    private javax.swing.JTextField txtSenhaConfirm;
+    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JPasswordField txtSenhaConfirm;
     // End of variables declaration//GEN-END:variables
 }
